@@ -1,4 +1,4 @@
-package com.example.personalbudget;
+package com.tavishmisra.personalbudget;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
