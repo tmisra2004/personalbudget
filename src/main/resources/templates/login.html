@@ -1,0 +1,28 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>PersonalBudget - Login</title>
+</head>
+<body>
+<h1 align="center">PersonalBudget</h1>
+
+<div class="container">
+
+    <form th:action="@{/login}" method="POST" class="form-signin">
+        <label for="username">Username: </label>
+        <input type="text" id="username" name="username" class="form-control" />
+        <br />
+        <label for="password">Password: </label>
+        <input type="password" id="password" name="password" class="form-control" />
+        <br />
+        <div align="center" th:if="${param.error}">
+            <p style="font-size: 20; color: #FF0000;">Username or Password is incorrect, please try again.</p>
+        </div>
+        <button name="Submit" value="Login" type="Submit" th:text="Login"></button>
+    </form>
+    <br />
+    <div align="center"><a th:href="@{http://localhost:8080/registration}">Register</a></div>
+</div>
+</body>
+</html>
