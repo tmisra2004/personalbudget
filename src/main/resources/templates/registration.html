@@ -2,13 +2,77 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 <head>
+    <style>
+        .validation-message {
+            color: #FF0000;
+        }
+    </style>
     <meta charset="UTF-8">
     <title>PersonalBudget - Register</title>
 </head>
-<body>
+<body style="font-family: 'Courier 10 Pitch'">
 <h1 align="center">Register</h1>
-<div class="container">
 
-</div>
+
+        <form th:action="@{/registration}"
+              th:object="${user}" method="POST">
+            <table>
+                <tr>
+
+                    <td>First Name: <input type="text" th:field="*{firstname}" /></td>
+                <td><label th:for="firstname" th:if="${#fields.hasErrors('firstname')}" th:errors="*{firstname}"
+                           class="validation-message"></label></td>
+                </tr>
+
+                <br />
+                <tr>
+                    <td>Last Name: <input type="text" th:field="*{lastname}" /></td>
+                <td><label th:for="lastname" th:if="${#fields.hasErrors('lastname')}" th:errors="*{lastname}"
+                           class="validation-message"></label></td>
+                </tr>
+                <br />
+                <tr>
+                    <td>Username: <input type="text" th:field="*{username}" /></td>
+                <td><label th:for="username" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"
+                                class="validation-message"></label></td>
+                </tr>
+            <br />
+                <tr>
+
+                    <td>Password: <input type="password" th:field="*{password}" /></td>
+                    <td><label th:for="password"></label></td>
+                </tr>
+                        <br />
+            </table>
+
+                <button name="Register" value="registration" type="Submit" th:text="Submit"></button>
+
+
+
+            <ul style="list-style: none" th:each="error: ${#fields.errors('password')}">
+                <li th:each="message : ${error.split(',')}">
+                    <p style="color: #FF0000;"
+                       th:text="${message}"></p>
+                </li>
+            </ul>
+
+
+        </form>
+
+    <div align="center">
+        <p style="color: #FF0000;"><span th:utext="${successMessage}"></span></p>
+    </div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
 </body>
 </html>

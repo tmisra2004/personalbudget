@@ -17,10 +17,10 @@ public class User {
     @Column(name = "user_id")
     private int id;
     @Column(name = "username")
+    @NotEmpty(message = "Please enter a username")
     private String username;
     @Column(name = "password")
-    @Length(min = 8, message = "Your password must be at least 8 characters")
-    @NotEmpty(message = "Please enter a password")
+    @NotEmpty(message = "Password cannot be blank.")
     @ValidPassword
     @Transient
     private String password;
