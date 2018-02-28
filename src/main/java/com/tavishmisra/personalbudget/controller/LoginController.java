@@ -3,6 +3,8 @@ package com.tavishmisra.personalbudget.controller;
 import com.tavishmisra.personalbudget.models.User;
 import com.tavishmisra.personalbudget.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -51,6 +53,16 @@ public class LoginController {
             modelAndView.setViewName("registration");
 
         }
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/mainmenu", method = RequestMethod.GET)
+    public ModelAndView mainmenu(){
+        ModelAndView modelAndView = new ModelAndView();
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        User user = userService.findUser(auth.getName());
+        modelAndView.addObject("userName", "Welcome " + user.getFirstname() + " " + user.getLastname() + "!");
+        modelAndView.setViewName("mainmenu");
         return modelAndView;
     }
 

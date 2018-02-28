@@ -6,23 +6,30 @@
 </head>
 <body style="font-family: 'Courier 10 Pitch'">
 <h1 align="center">PersonalBudget</h1>
-<h3 align="left">Login</h3>
+<h3 align="center">Login</h3>
 
 
 
     <form th:action="@{/login}" method="POST" class="form-signin">
-        <label for="username">Username:</label>
+        <div align="center">
+        <label for="username">Username</label>
+        <br />
         <input type="text" id="username" name="username" class="form-control" />
         <br />
         <br />
-        <label for="password">Password:</label>
+        <label for="password">Password</label>
+        <br />
         <input type="password" id="password" name="password" class="form-control" />
         <br />
-        <div align="left" th:if="${param.error}">
-            <p style="color: #FF0000;">Username or Password is incorrect, please try again.</p>
-        </div>
+        <br />
         <button name="Submit" value="Login" type="Submit" th:text="Login"></button>
+            <br />
+            <span th:if="${param.error}">
+            <p style="color: #FF0000;">Username or Password is incorrect, please try again.</p>
+        </span>
+        </div>
     </form>
+    <br />
     <br />
     <div align="center"><a th:href="@{http://localhost:8080/registration}">Register</a></div>
 

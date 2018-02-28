@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>PersonalBudget - Main Menu</title>
+</head>
+<body style="font-family: 'Courier 10 Pitch'">
+<h1><span th:utext="${userName}"</h1>
+<p />
+<div align="center">
+    <h2>Main Menu</h2>
+    <br />
+    <h2><a th:href="@{/newmonthlybudget}">Create New Monthly Budget</a></h2>
+    <br />
+    <h2><a th:href="@{entertransactions}">Enter Transactions</a></h2>
+    <br />
+    <h2><a th:href="@{/reports}">View and Print Reports</a></h2>
+
+</div>
+<a th:href="@{/logout}">Logout</a>
+</body>
+</html>

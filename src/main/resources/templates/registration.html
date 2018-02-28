@@ -13,42 +13,44 @@
 <body style="font-family: 'Courier 10 Pitch'">
 <h1 align="center">Register</h1>
 
-
+        <div align="center">
         <form th:action="@{/registration}"
               th:object="${user}" method="POST">
-            <table>
-                <tr>
 
-                    <td>First Name: <input type="text" th:field="*{firstname}" /></td>
-                <td><label th:for="firstname" th:if="${#fields.hasErrors('firstname')}" th:errors="*{firstname}"
-                           class="validation-message"></label></td>
-                </tr>
+                    First Name
+                    <br />
+                    <input type="text" th:field="*{firstname}" />
+                    <br />
+                    <label th:for="firstname" th:if="${#fields.hasErrors('firstname')}" th:errors="*{firstname}"
+                           class="validation-message"></label>
+                <br />
+                <br />
+
+                    Last Name
+                    <br />
+                    <input type="text" th:field="*{lastname}" />
+                    <br />
+                    <label th:for="lastname" th:if="${#fields.hasErrors('lastname')}" th:errors="*{lastname}"
+                           class="validation-message"></label>
 
                 <br />
-                <tr>
-                    <td>Last Name: <input type="text" th:field="*{lastname}" /></td>
-                <td><label th:for="lastname" th:if="${#fields.hasErrors('lastname')}" th:errors="*{lastname}"
-                           class="validation-message"></label></td>
-                </tr>
                 <br />
-                <tr>
-                    <td>Username: <input type="text" th:field="*{username}" /></td>
-                <td><label th:for="username" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"
-                                class="validation-message"></label></td>
-                </tr>
-            <br />
-                <tr>
 
-                    <td>Password: <input type="password" th:field="*{password}" /></td>
-                    <td><label th:for="password"></label></td>
-                </tr>
-                        <br />
-            </table>
+                    Username
+                    <br />
+                    <input type="text" th:field="*{username}" />
+                    <br />
+                    <label th:for="username" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"
+                                class="validation-message"></label>
 
-                <button name="Register" value="registration" type="Submit" th:text="Submit"></button>
+                <br />
+                <br />
 
-
-
+                    Password
+                    <br />
+                    <input type="password" th:field="*{password}" />
+                    <br />
+                    <label th:for="password"></label>
             <ul style="list-style: none" th:each="error: ${#fields.errors('password')}">
                 <li th:each="message : ${error.split(',')}">
                     <p style="color: #FF0000;"
@@ -56,9 +58,12 @@
                 </li>
             </ul>
 
+                <br />
 
+            <button name="Register" value="registration" type="Submit" th:text="Submit"></button>
+
+            </div>
         </form>
-
     <div align="center">
         <p style="color: #FF0000;"><span th:utext="${successMessage}"></span></p>
     </div>
