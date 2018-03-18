@@ -2,14 +2,26 @@ package com.tavishmisra.personalbudget.models;
 
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import java.util.List;
 
 @Entity
-@Table(name = "Budget")
 public class Budget {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "budget_id")
+    @GeneratedValue
     private int id;
+
+    @NotNull
+    private String name;
+
+    @ManyToMany(mappedBy = "items")
+    private List<Item> items;
+
+    public Budget(String name) {
+        this.name = name;
+    }
+
+
 
 }
