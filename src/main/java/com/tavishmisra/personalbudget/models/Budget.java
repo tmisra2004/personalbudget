@@ -15,13 +15,28 @@ public class Budget {
     @NotNull
     private String name;
 
-    @ManyToMany(mappedBy = "items")
+    @ManyToMany
     private List<Item> items;
 
     public Budget(String name) {
         this.name = name;
     }
 
+    public Budget() {}
 
+    public String getName() {
+        return name;
+    }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public List<Item> getItems() {
+        return items;
+    }
 }
