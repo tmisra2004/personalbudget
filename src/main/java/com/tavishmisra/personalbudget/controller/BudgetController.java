@@ -35,7 +35,7 @@ public String index(Model model) {
 
 @RequestMapping(value = "add", method = RequestMethod.GET)
 public String addBudget(Model model) {
-    model.addAttribute("title", "Add Budget");
+    model.addAttribute("title", "Create A New Budget");
     model.addAttribute("budget", new Budget());
     return "budget/add";
 }
