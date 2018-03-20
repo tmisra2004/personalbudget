@@ -18,20 +18,21 @@ public class Item {
     @NotNull
     private String name;
 
-    @NotNull(message = "Transaction description is required")
-    private String description;
+    @NotNull
+    private double balance;
 
     @ManyToMany(mappedBy = "items")
     private List<Budget> budgets;
 
-    public Item(String name, String description) {
+    public Item(String name, double balance) {
         this.name = name;
-        this.description = description;
+        this.balance = balance;
     }
 
     public int getId() {
         return id;
     }
+
 
     public String getName() {
         return name;
@@ -41,12 +42,12 @@ public class Item {
         this.name = name;
     }
 
-    public String getDescription() {
-        return description;
+    public double getBalance() {
+        return balance;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setBalance(double balance) {
+        this.balance = balance;
     }
 
     public List<Budget> getBudgets() {

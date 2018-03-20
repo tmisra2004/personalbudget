@@ -4,11 +4,59 @@
 <head>
     <meta charset="UTF-8">
     <title>Create A New Budget</title>
-    <div align="center"><h1 th:text="${title}">Default Title</h1></div>
+
 
 
 </head>
 <body>
+<div align="center"><h1 th:text="${title}">Default Title</h1></div>
+<br />
+<br />
+<form method="POST" th:object="${budget}">
+    <label th:for="month">Month:</label>
+    <input list="month" id="month" name="month" value="month" th:field="*{month}" />
+    <datalist id="month">
+        <option value="Month" />
+        <option value="January" />
+        <option value="February" />
+        <option value="March" />
+        <option value="April" />
+        <option value="May" />
+        <option value="June" />
+        <option value="July" />
+        <option value="August" />
+        <option value="September" />
+        <option value="October" />
+        <option value="November" />
+        <option value="December" />
+
+    </datalist>
+
+    <label th:for="year">Year</label>
+    <input list="year" id="year" name="year" th:field="*{year}" />
+    <SCRIPT LANGUAGE="JavaScript">
+
+        <!--
+        var time = new Date();
+        var year = time.getYear();
+        if (year < 1900) {
+            year = year + 1900;
+        }
+        var date = year - 0; /*change the '101' to the number of years in the past you want to show */
+        var future = year + 1; /*change the '100' to the number of years in the future you want to show */
+        document.writeln ("<datalist id="year"><OPTION value=\"\">Year");
+        do {
+            date++;
+            document.write ("<OPTION value=\"" +date+"\">" +date+ "");
+        }
+        while (date < future)
+        document.write ("</datalist>");
+        //   -->
+
+    </script>
+    <input type="Submit" value="Submit" />
+
+</form>
 
 </body>
 </html>

@@ -13,27 +13,40 @@ public class Budget {
     private int id;
 
     @NotNull
-    private String name;
+    private String month;
+
+    @NotNull
+    private String year;
 
     @ManyToMany
     private List<Item> items;
 
-    public Budget(String name) {
-        this.name = name;
+    public Budget(String month, String year) {
+        this.month = month;
+        this.year = year;
     }
 
     public Budget() {}
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public int getId() {
         return id;
+    }
+
+
+    public String getMonth() {
+        return month;
+    }
+
+    public void setMonth(String month) {
+        this.month = month;
+    }
+
+    public String getYear() {
+        return year;
+    }
+
+    public void setYear(String year) {
+        this.year = year;
     }
 
     public List<Item> getItems() {

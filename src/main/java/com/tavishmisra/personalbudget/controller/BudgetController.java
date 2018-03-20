@@ -55,7 +55,7 @@ public String addBudget(Model model, @ModelAttribute @Valid Budget budget, Error
 public String viewBudget(Model model, @PathVariable int id) {
     Budget budget = budgetDao.findOne(id);
 
-    model.addAttribute("title", budget.getName());
+    model.addAttribute("title", budget.getMonth() + " " + budget.getYear() + " Budget");
     model.addAttribute("budget", budget);
     return "budget/view";
     }
