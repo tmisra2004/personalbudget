@@ -64,7 +64,7 @@ public String viewBudget(Model model, @PathVariable int id) {
     return "budget/view";
     }
 
-@RequestMapping(value = "additem/{id}", method = RequestMethod.GET)
+@RequestMapping(value = "additem", method = RequestMethod.GET)
 public String addBudgetItem(Model model, @PathVariable int id) {
     Budget budget = budgetDao.findOne(id);
     model.addAttribute("title", "Add Budget Item to " + budget.getMonth() + " " + budget.getYear() + " Budget");
