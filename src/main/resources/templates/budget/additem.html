@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add A Budget Item</title>
+</head>
+<body>
+<div align="center"><h1 th:text="${title}">Default Title</h1></div>
+<br />
+<br />
+<form method="POST" th:object="${item}">
+    <label th:for="budgetitem">Budget Item:</label>
+    <input type="text" th:field="*{name}" />
+    <label th:for="initialbalance">Initial Balance: $</label>
+    <input type="text"
+</form>
+</body>
+</html>

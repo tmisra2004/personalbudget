@@ -9,6 +9,8 @@
 <div align="center"><h1 th:text="${title}">Default Title</h1></div>
 <br />
 <br />
-<div align="center"><a th:href="@{/budget/additem">Add Budget Item</a></div>
+<b><hr></b>
+<b>Total: $<span th:text="${total}"></span></b>
+<div align="center"><a th:href="@{/budget/additem/${budgetid}}">Add Budget Item</a></div>
 </body>
 </html>

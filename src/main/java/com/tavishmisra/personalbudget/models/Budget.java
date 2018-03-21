@@ -18,6 +18,9 @@ public class Budget {
     @NotNull
     private String year;
 
+    @NotNull
+    private double total = 0.0;
+
     @ManyToMany
     private List<Item> items;
 
@@ -32,6 +35,13 @@ public class Budget {
         return id;
     }
 
+    public double getTotal() {
+        return total;
+    }
+
+    public void setTotal(double total) {
+        this.total = total;
+    }
 
     public String getMonth() {
         return month;
@@ -51,5 +61,10 @@ public class Budget {
 
     public List<Item> getItems() {
         return items;
+    }
+
+
+    public void addItem(Item item) {
+        items.add(item);
     }
 }

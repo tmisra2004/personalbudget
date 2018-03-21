@@ -19,10 +19,13 @@ public class Item {
     private String name;
 
     @NotNull
-    private double balance;
+    private double balance = 0.0;
 
     @ManyToMany(mappedBy = "items")
     private List<Budget> budgets;
+
+    public Item() {
+    }
 
     public Item(String name, double balance) {
         this.name = name;
