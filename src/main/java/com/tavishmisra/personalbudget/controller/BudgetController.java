@@ -4,7 +4,6 @@ import com.tavishmisra.personalbudget.models.Budget;
 import com.tavishmisra.personalbudget.models.Item;
 import com.tavishmisra.personalbudget.models.data.BudgetDao;
 import com.tavishmisra.personalbudget.models.data.ItemDao;
-import com.tavishmisra.personalbudget.models.forms.AddBudgetItemForm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -64,38 +63,23 @@ public String viewBudget(Model model, @PathVariable int id) {
     return "budget/view";
     }
 
-    @RequestMapping(value = "additem/{id}", method = RequestMethod.GET)
-    public String addItem(Model model, @PathVariable int id) {
+    @RequestMapping(value = "additem", method = RequestMethod.GET)
+    public String addItem(Model model) {
 
-        Budget budget = budgetDao.findOne(id);
-
-        AddBudgetItemForm itemForm = new AddBudgetItemForm(budget, itemDao.findAll());
-
-        model.addAttribute("title", "Add item to " + budget.getMonth() + budget.getYear() + " Budget");
-        model.addAttribute("form", itemForm);
+        model.addAttribute("title", "Add item to Budget");
+        model.addAttribute("item", new Item());
         return "budget/additem";
 
     }
 
-    @RequestMapping(value = "additem/{id}", method = RequestMethod.POST)
-    public String addItem(Model model,
-                          @ModelAttribute @Valid AddBudgetItemForm form, Errors errors, @PathVariable int id) {
-
-        if (errors.hasErrors()) {
-            model.addAttribute("title", "Add Item");
-            return "budget/additem";
-        }
-
-        Budget budget = budgetDao.findOne(form.getBudgetId());
-        Item item = itemDao.findOne(form.getItemId());
-        model.addAttribute("form", form);
-
-
-        budget.addItem(item);
-        budgetDao.save(budget);
-
-        return "redirect:../view/" + budget.getId();
+@RequestMapping(value = "additem", method = RequestMethod.POST)
+public String addItem(Model model, @ModelAttribute @Valid Item item, Errors errors) {
+    if (errors.hasErrors()) {
+        return "budget/additem";
     }
+    itemDao.save(item);
+    model.addAttribute("addsuccess", "Item added successfully");
+    return "budget/additem";
 
-
+    }
 }
